@@ -275,13 +275,6 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
     }
 }
 
-- (void) disPlayGridViewToCameraView:(BOOL)show
-{
-    [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        self.cameraGridView.alpha = (show ? 1.0 : 0.0);
-    } completion:NULL];
-}
-
 #pragma mark - CameraManagerDelagate
 
 - (void) closeCamera
@@ -296,7 +289,9 @@ NSLocalizedStringFromTable(key, @"DBCamera", nil)
 }
 
 - (void) cameraView:(UIView *)camera showGridView:(BOOL)show {
-    [self disPlayGridViewToCameraView:!show];
+    [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.cameraGridView.alpha = (show ? 1.0 : 0.0);
+    } completion:NULL];
 }
 
 - (void) triggerFlashForMode:(AVCaptureFlashMode)flashMode
